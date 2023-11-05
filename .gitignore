@@ -1,6 +1,6 @@
 result
 result-*
-.envrc
+.direnv/
 debug/
 
 # Just to be sure, since we're occasionally handling test keys:
