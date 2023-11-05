@@ -1,12 +1,16 @@
 # Copyright 2022 The TVL Contributors
 # SPDX-License-Identifier: Apache-2.0
 
-{ buildGoPackage }:
+{ buildGoPackage, lib }:
 
 buildGoPackage {
   name = "nixery-popcount";
 
-  src = ./.;
+  src = lib.sources.sourceFilesBySuffices ./. [
+    ".sum"
+    ".mod"
+    ".go"
+  ];
 
   goPackagePath = "github.com/google/nixery/popcount";
   doCheck = true;
