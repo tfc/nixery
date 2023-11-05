@@ -1,4 +1,5 @@
-{ buildGoModule
+{ lib
+, buildGoModule
 , makeWrapper
 , nixery-prepare-image
 }:
@@ -10,7 +11,13 @@ in
 buildGoModule {
   pname = "nixery";
   inherit version;
-  src = ./.;
+
+  src = lib.sources.sourceFilesBySuffices ./. [
+    ".sum"
+    ".mod"
+    ".go"
+  ];
+
   doCheck = true;
 
   vendorHash = "sha256-io9NCeZmjCZPLmII3ajXIsBWbT40XiW8ncXOuUDabbo=";
